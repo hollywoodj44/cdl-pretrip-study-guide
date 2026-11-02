@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDL Pre-Trip Inspection Master Study Guide & Practice Lab</title>
+  <meta name="description" content="Interactive CDL Pre-Trip Inspection study guide, mock test checklist, audio verbal practice, and flashcards based on official state exam criteria.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-badge">CDL PRO</div>
+        <div class="brand-info">
+          <h1>Pre-Trip Inspection Master Study Guide</h1>
+          <p class="brand-sub">Driver Exam Prep &bull; Class A &amp; B &bull; Dillon Mitchell Study Sheet Reference</p>
+        </div>
+      </div>
+      
+      <div class="header-actions">
+        <div class="warning-pill" id="auto-fail-banner" title="Crucial Warning: An error on Air Brakes is an automatic failure">
+          <span class="pulse-indicator"></span>
+          <span class="warning-text"><strong>* AUTO-FAIL RULE:</strong> Air Brake Check (PLAB) must be 100% flawless</span>
+        </div>
+        <button class="btn btn-audio-toggle" id="global-speech-btn" title="Toggle Audio Narration for Study Scripts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <span id="speech-btn-label">Voice Guide</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="main-nav">
+      <div class="nav-container">
+        <button class="nav-tab" data-tab="walkthrough">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>1. Verbal Walkthrough</span>
+        </button>
+        <button class="nav-tab" data-tab="typing">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <span>2. ✍️ Muscle Memory Typing Drill</span>
+        </button>
+        <button class="nav-tab" data-tab="simulator">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>3. Mock Inspection Simulator</span>
+        </button>
+        <button class="nav-tab" data-tab="flashcards">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <span>4. Flashcards &amp; Memory</span>
+        </button>
+        <button class="nav-tab" data-tab="quiz">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>5. Exam Quiz Challenge</span>
+        </button>
+        <button class="nav-tab" data-tab="original-sheet">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>6. Original Study Photo</span>
+        </button>
+        <button class="nav-tab" data-tab="mnemonics">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>7. Mnemonics Cheat Sheet</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-wrapper">
+
+    <!-- ============================================== -->
+    <!-- TAB 1: VERBAL WALKTHROUGH & STEP-BY-STEP GUIDE -->
+    <!-- ============================================== -->
+    <section class="tab-pane active" id="pane-walkthrough">
+      <div class="section-hero">
+        <div class="hero-left">
+          <span class="tag tag-accent">Official CDL Verbal Script</span>
+          <h2>The Complete Say &amp; Point Verbal Walkthrough</h2>
+          <p>Examiners grade you on <strong>what you touch</strong>, <strong>what you look for</strong>, and <strong>what you say</strong>. Use these exact verbatim verbal phrases formulated from your study checklist.</p>
+        </div>
+        <div class="quick-stats">
+          <div class="stat-card">
+            <span class="stat-num">5</span>
+            <span class="stat-label">Core Inspection Zones</span>
+          </div>
+          <div class="stat-card fail-highlight">
+            <span class="stat-num">1</span>
+            <span class="stat-label">Critical Auto-Fail Section</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">25+</span>
+            <span class="stat-label">Exam Score Items</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-filter-bar">
+        <span class="filter-label">Jump to Section:</span>
+        <a href="#zone-in-cab" class="filter-chip">🚨 In-Cab &amp; Air Brakes (PLAB)</a>
+        <a href="#zone-lights" class="filter-chip">💡 Lights Operations</a>
+        <a href="#zone-engine" class="filter-chip">⚙️ Engine &amp; Steering</a>
+        <a href="#zone-suspension" class="filter-chip">🛞 Tires, Rims &amp; Suspension</a>
+        <a href="#zone-side" class="filter-chip">🔋 Side, Battery, Tank &amp; Frame</a>
+        <a href="#zone-rear" class="filter-chip">🚚 Rear of Vehicle</a>
+      </div>
+
+      <!-- Zone 1: In-Vehicle / Engine Start -->
+      <div class="inspection-zone" id="zone-in-cab">
+        <div class="zone-header critical-border">
+          <div class="zone-badge critical">SECTION 1 &bull; HIGHEST IMPORTANCE</div>
+          <h3>In-Vehicle &amp; Engine Start Inspection</h3>
+          <div class="zone-alert">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <strong>* AUTOMATIC FAILURE IF NOT PERFORMED CORRECTLY:</strong> You MUST perform the Air Brake Test in the exact sequence and verbalize all pressure cut-offs and audible/visual warnings.
+          </div>
+        </div>
+
+        <div class="checklist-grid">
+
+          <!-- Item 1: Air Brake PLAB -->
+          <div class="script-card card-critical" data-id="plab">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot alert-dot"></span>
+                <h4>* Air Brake Check (PLAB Test)</h4>
+              </div>
+              <div class="card-controls">
+                <span class="badge badge-danger">Automatic Failure Item</span>
+                <button class="btn-audio-speak" data-text="Air Brake Check PLAB. Step 1: Pressure drop test. Wheels chocked, release both parking and trailer brakes. Turn off engine, turn key ON. Fully apply service foot brake and hold for 1 minute. Must not lose more than 3 psi for single or 4 psi for combination vehicle. Step 2: Low air warning test. Pump or fan brake pedal. The low air warning light and buzzer must activate at or above 60 psi. Step 3: Air pop out spring brake test. Continue fanning brake pedal. Between 20 and 45 psi, the emergency parking brake tractor protection valves must pop out. Step 4: Build up and governor cut out test. Start engine, run at fast idle. Pressure should build from 85 to 100 psi within 45 seconds. Air compressor governor cut out must stop between 120 and 140 psi.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="script-body">
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">P</div><span><strong>P - Pressure Drop:</strong> Chock wheels, release brakes, engine off, key ON. Press and hold foot brake 1 minute. Single vehicle: Max 3 PSI drop. Combination: Max 4 PSI drop.</span>
+              </div>
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">L</div><span><strong>L - Low Air Warning:</strong> Fan/pump brake pedal. Warning buzzer and red light MUST activate at or above <strong>60 PSI</strong> (55-75 PSI range).</span>
+              </div>
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">A</div><span><strong>A - Air Pop-Out:</strong> Continue fanning brake pedal. Between <strong>20 - 45 PSI</strong>, the yellow parking brake and red trailer valves MUST pop out automatically.</span>
+              </div>
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">B</div><span><strong>B - Build-Up &amp; Cut-Out:</strong> Start engine. Pressure builds from 85 to 100 PSI within 45 seconds. Governor cuts OUT between <strong>120 - 140 PSI</strong> with a clear purge sneeze.</span>
+              </div>
+
+              <div class="verbal-box">
+                <div class="verbal-label">EXACT VERBAL SCRIPT TO SAY TO EXAMINER:</div>
+                <p><em>"Examiner, I am now conducting my 4-step Air Brake Check. My wheels are chocked. I push both valves in to release brakes. I turn engine off and turn ignition to ON. I apply the foot brake firmly for 60 seconds. My gauges show I did not lose more than 3 PSI in one minute. Next, I pump the pedal to test the low air warning. At 60 PSI or above, my red warning light and audible buzzer activate. Next, I continue pumping down to test my spring brakes. Between 20 and 45 PSI, my parking valves pop out into emergency set position. Finally, I start the engine to test build-up time and governor cut-out. Pressure builds 85 to 100 PSI within 45 seconds, and the governor cut-out relieves pressure between 120 and 140 PSI."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Parking & Trailer Brake Check Tug -->
+          <div class="script-card" data-id="brake-tug">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Parking &amp; Trailer Brake Check (Tug Test)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Parking and trailer brake check tug test. Set the parking brake, put truck in low gear, gently tug forward against the brake. The vehicle should not move. Next, release the tractor parking brake, set the trailer emergency brake, and gently tug against it. The trailer brake should hold the vehicle firmly.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <p><strong>Inspection Action:</strong> With parking brake set, put vehicle in low forward gear and gently let out clutch/apply gentle throttle to verify the brake holds firm. Repeat separately for trailer brakes if equipped.</p>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"My parking brake is set. I place the transmission in low gear and gently pull against the brake. The vehicle did not move, confirming the parking brake holds properly. I will now test the trailer brakes by setting the trailer valve and tugging against it. It holds securely."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Service Brake Check 5mph -->
+          <div class="script-card" data-id="service-brake">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Service Brake Check (5 MPH Test)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Service brake check. Release parking brakes, accelerate forward to approximately 5 miles per hour. Press the foot brake firmly. The vehicle must stop smoothly without pulling to the left or right, and no delay or unusual grabbing.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <p><strong>Inspection Action:</strong> Pull vehicle forward at <strong>5 mph</strong>, press foot service brake firmly while lightly holding the steering wheel.</p>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"I am pulling forward at approximately 5 miles per hour and pressing the service brake pedal firmly. The vehicle came to a complete, smooth stop. The steering wheel did not pull to the left or right, which indicates my service brakes are stopping evenly with no pulling or grabbing."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Lighting Indicators -->
+          <div class="script-card" data-id="dash-indicators">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Lighting &amp; Dash Indicators (Left, Right, 4-Way, High Beam, ABS, DEF)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Lighting indicators. Check left turn indicator, right turn indicator, 4-way hazard flashers, and high beam indicator on dashboard. Verify ABS light illuminates and turns off, and check DEF indicator gauge level.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <div class="tag-row">
+                <span class="tag">Left Turn Signal</span>
+                <span class="tag">Right Turn Signal</span>
+                <span class="tag">4-Way Hazard Flashers</span>
+                <span class="tag">High Beam Blue Indicator</span>
+                <span class="tag">ABS Light Cycle</span>
+                <span class="tag">DEF Indicator Level</span>
+              </div>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"Looking at my dashboard: my Left turn indicator is flashing green. My Right turn indicator is flashing green. My 4-Way hazard indicator is flashing. My High beam blue indicator light illuminates when activated. My ABS light illuminated during startup and properly turned off, indicating no system faults. My DEF fluid indicator shows sufficient diesel exhaust fluid for operation."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5: Emergency Equipment -->
+          <div class="script-card" data-id="emergency-equip">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Emergency Equipment (Fuses, Extinguisher, Triangles)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Emergency equipment check. Three required items: One, spare electrical fuses of correct amperage. Two, fire extinguisher fully charged, pin in place, rated 10 B C or 5 B C, securely mounted. Three, three red reflective warning triangles in good condition.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <div class="spec-grid">
+                <div class="spec-item">
+                  <span class="spec-label">1. Spare Fuses</span>
+                  <span class="spec-val">Spare fuses of each rating / circuit breaker operational</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">2. Fire Extinguisher</span>
+                  <span class="spec-val">Properly charged (green zone), pin &amp; seal intact, securely mounted</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">3. Warning Triangles</span>
+                  <span class="spec-val">Three (3) red reflective triangles, clean &amp; unbroken</span>
+                </div>
+              </div>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"I am checking my emergency safety equipment. I have spare electrical fuses stored in the cab. My fire extinguisher is securely mounted, fully charged with the gauge in the green zone, pin and safety tie in place. I have three red reflective warning triangles, all intact and clean."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 6: Windshield & Traffic Monitoring Devices -->
+          <div class="script-card" data-id="windshield-mirrors">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Windshield &amp; Traffic Monitoring Devices (Clean, Obstructions, Flaws, Clean &amp; Adjusted)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Windshield and traffic monitoring devices. Windshield is clean, no illegal stickers or obstructions, no cracks, chips, or damage. Rearview and side traffic monitoring mirrors are clean, undamaged, securely mounted, and properly adjusted for my seated driving position.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <p><strong>Look For:</strong> Clean glass, no obstructions/stickers in line of sight, no cracks or spidering, mirrors securely mounted and adjusted for driver visibility.</p>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"My windshield is clean, free of obstructions, no illegal stickers, and has no cracks, stars, or chips. All traffic monitoring mirrors (flat and convex) are securely mounted, clean, not cracked or broken, and properly adjusted to my driving view."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 7: Wipers & Washers -->
+          <div class="script-card" data-id="wipers-washers">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Wipers &amp; Washers (Secure, Damage, Work / Squirt)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Wiper arms and blades are securely mounted, rubber blades not damaged, dry-rotted, or torn, with good spring tension against windshield. Washer fluid squirts evenly onto glass and wipers operate smoothly on high and low speeds.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <p><strong>Note from Sheet:</strong> <em>"secure, damage, work/squirt"</em></p>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"My wiper arms and blades are securely attached with strong tension. The rubber blades are not dry-rotted, torn, or damaged. When activated, the washer fluid squirts properly across the windshield, and the wipers operate smoothly without chattering or streaking."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 8: Heater & Defroster -->
+          <div class="script-card" data-id="heater-defroster">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Heater &amp; Defroster Working</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Heater and defroster check. Turn fan blower on. Place hand above dashboard vents to verify strong air flow from the defroster, and check lower floor vents to verify the cab heater is working.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <p><strong>Action:</strong> Turn switch to defrost, feel air blowing against windshield. Switch to heat, feel warm air on feet.</p>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"I am testing my heater and defroster. I feel strong airflow coming from the top windshield defroster vents. I switch to floor heat and feel warm airflow at the lower floor vents. Both blowers are functioning properly."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 9: Horns -->
+          <div class="script-card" data-id="horns">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Horn(s) - City &amp; Air Horns</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Horn check. Test the electric city horn by pressing center of steering wheel. Test the highway air horn by pulling the overhead lanyard. Both horns sound loud and clear.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <p><strong>Note:</strong> You must test <strong>BOTH</strong> the electric (City) horn and the pneumatic (Air) horn!</p>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"I sound my City electric horn [Honk] - it works loud and clear. I pull the lanyard to sound my Air horn [Honk] - it sounds properly with full air pressure."</em></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Zone 2: Lights Operations Check -->
+      <div class="inspection-zone" id="zone-lights">
+        <div class="zone-header">
+          <div class="zone-badge">SECTION 2 &bull; EXTERNAL LIGHTING PATTERN</div>
+          <h3>Lights Operations Check</h3>
+          <p class="zone-desc">The study sheet lists the exact walkaround order: <strong>L-R-4-C-H-L / L-4-C / L-R-4-TL-BL / R-4-C</strong></p>
+        </div>
+
+        <div class="lights-mnemonic-card">
+          <div class="mnemonic-code-display">
+            <code>L - R - 4 - C - H - L &nbsp;|&nbsp; L - 4 - C &nbsp;|&nbsp; L - R - 4 - TL - BL &nbsp;|&nbsp; R - 4 - C</code>
+          </div>
+          <div class="light-code-breakdown">
+            <div class="light-chip"><strong>L:</strong> Left Turn</div>
+            <div class="light-chip"><strong>R:</strong> Right Turn</div>
+            <div class="light-chip"><strong>4:</strong> 4-Way Hazards</div>
+            <div class="light-chip"><strong>C:</strong> Clearance Lights</div>
+            <div class="light-chip"><strong>H:</strong> Headlights (High)</div>
+            <div class="light-chip"><strong>L:</strong> Headlights (Low)</div>
+            <div class="light-chip"><strong>TL:</strong> Tail Lights</div>
+            <div class="light-chip"><strong>BL:</strong> Brake Lights</div>
+          </div>
+          <div class="verbal-box">
+            <div class="verbal-label">VERBAL SCRIPT (EXTERNAL LIGHTS):</div>
+            <p><em>"I will now ask the examiner to assist in checking external lights. In front: headlights high and low beams, left turn, right turn, 4-way flashers, and clearance lights are amber, clean, and not broken. On the sides: marker and turn lights amber, clean, functional. In rear: tail lights, brake lights, left and right turn, 4-ways, reverse lights, and clearance lights are red, clean, and functioning properly."</em></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zone 3: Front of Vehicle / Engine Area -->
+      <div class="inspection-zone" id="zone-engine">
+        <div class="zone-header">
+          <div class="zone-badge">SECTION 3 &bull; ENGINE COMPARTMENT &amp; STEERING</div>
+          <h3>Front of Vehicle &amp; Engine Area</h3>
+        </div>
+
+        <div class="checklist-grid">
+          
+          <!-- Lenses -->
+          <div class="script-card" data-id="lenses-front">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Lenses (Color, Clean, Missing, Broken)</h4>
+              </div>
+              <div class="card-controls">
+                <span class="badge badge-accent">Circled Note: Broken</span>
+                <button class="btn-audio-speak" data-text="Front lenses check. Headlight and clearance lenses are the proper color, amber and clear. Clean, none missing, none cracked or broken.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <p><strong>Examiner Checklist:</strong> Proper color (Amber in front, clear headlights), clean, not missing, <strong>not broken or cracked</strong>.</p>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"All front lenses are clean, proper color (clear headlights, amber clearance lights), none are missing, cracked, or broken."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fluid Levels -->
+          <div class="script-card" data-id="fluid-levels">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Fluid Levels (Coolant, Oil, Power Steering)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Fluid levels. Coolant reservoir level is above add mark or sight glass. Engine oil dipstick removed, wiped, reinserted, level is between min and max lines. Power steering fluid reservoir checked, dipstick or sight glass above minimum fill line.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <div class="spec-grid">
+                <div class="spec-item">
+                  <span class="spec-label">Coolant</span>
+                  <span class="spec-val">Between add &amp; full mark / sight glass visible</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Engine Oil</span>
+                  <span class="spec-val">Dipstick pulled, wiped, level between ADD &amp; FULL</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Power Steering</span>
+                  <span class="spec-val">Reservoir cap / dipstick above minimum operating range</span>
+                </div>
+              </div>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"Coolant reservoir is securely mounted, level is above the cold fill mark with no leaks. Engine oil dipstick pulled, wiped clean, reinserted; oil level is between minimum and maximum operating marks. Power steering reservoir is securely mounted and level is within safe operating range."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fluid & Air Leaks -->
+          <div class="script-card" data-id="leaks-puddles">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Fluid &amp; Air Leaks (Puddles, Eng/Trans, Air)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Fluid and air leaks. Look under the engine and transmission for wet spots, dripping fluid, or puddles. Listen closely for any audible air leaks escaping from air lines.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <p><strong>Key Points:</strong> Look on ground underneath vehicle for fresh puddles of oil, coolant, transmission fluid, or fuel. Listen for hissing air leaks.</p>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"Looking underneath the engine, transmission, and front axle: there are no puddles, wet spots, or active fluid leaks. I do not hear any audible air hissing or air leaks."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Steering Systems -->
+          <div class="script-card" data-id="steering-system">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Steering System (Box, Hoses, Links/Arms/Rods/Joints, Hardware &amp; Cotter Pin)</h4>
+              </div>
+              <div class="card-controls">
+                <span class="badge badge-accent">Circled Note: Cotter Pin</span>
+                <button class="btn-audio-speak" data-text="Steering system inspection. Steering box is securely mounted with all bolts tight, no fluid leaks. Steering hoses not cracked, leaking, or worn. Steering linkage: pitman arm, drag link, steering arms, tie rod, and sockets are not cracked, loose, or worn. Castle nuts are tight and cotter pin is present and intact.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <div class="detail-bullets">
+                <div><strong>Box:</strong> Securely mounted to frame, no missing bolts, no fluid leaks.</div>
+                <div><strong>Hoses:</strong> Power steering pressure and return lines not cracked, leaking, or worn.</div>
+                <div><strong>Links / Arms / Rods / Joints / Socket:</strong> Pitman arm, drag link, steering knuckle, tie rod not cracked, bent, loose, or worn.</div>
+                <div><strong>Hardware:</strong> All bolts, castle nuts, and <strong>COTTER PINS</strong> present and secure.</div>
+              </div>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"My steering gear box is securely mounted to the truck frame, all mounting bolts are tight, and there are no power steering fluid leaks. Steering hoses are not cracked, chafed, or leaking. The pitman arm, drag link, steering arm, and tie rod have no excessive play, no cracks or bends. All castle nuts are tight and all COTTER PINS are present and locked."</em></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Zone 4: Tires, Rims, Suspension & Brakes -->
+      <div class="inspection-zone" id="zone-suspension">
+        <div class="zone-header">
+          <div class="zone-badge">SECTION 4 &bull; TIRES, SUSPENSION &amp; WHEEL END</div>
+          <h3>Front Wheel End, Suspension &amp; Brakes</h3>
+        </div>
+
+        <div class="checklist-grid">
+
+          <!-- Tires ICD -->
+          <div class="script-card card-highlight" data-id="tires-icd">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot alert-dot"></span>
+                <h4>Tires (ICD Rule: Inflation, Condition, Depth 4/32" &amp; 2/32")</h4>
+              </div>
+              <div class="card-controls">
+                <span class="badge badge-accent">Circled Note: 4/32, 2/32</span>
+                <button class="btn-audio-speak" data-text="Tire inspection using ICD. I for Inflation: check air pressure with gauge at accessible valve stem. C for Condition: check tread and sidewall for cuts, exposed wires, bumps, and bulges. Valve cap is present, not missing, damaged, or broken. D for Depth: tread depth measured with gauge, minimum 4 thirty-seconds of an inch on front steer tires, and 2 thirty-seconds on all other tires. Steer tires must not be recapped.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">I</div><span><strong>Inflation:</strong> Measured with tire air gauge at accessible valve stem. (Checked when cold, properly inflated to tire spec, valve cap present).</span>
+              </div>
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">C</div><span><strong>Condition:</strong> Even wear, NO cuts, exposed cords/wires, NO bumps or bulges in sidewall or tread.</span>
+              </div>
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">D</div><span><strong>Depth:</strong> Minimum <strong>4/32"</strong> on FRONT STEER tires; minimum <strong>2/32"</strong> on drive/trailer tires.</span>
+              </div>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"Inspecting tires using I-C-D. I for Inflation: air pressure checked with a tire gauge at the valve stem, properly inflated to manufacturer PSI; valve cap is not missing, broken, or damaged. C for Condition: tread is evenly worn, sidewalls have no cuts, no exposed cords or wires, and no bumps or bulges. D for Depth: tread depth is verified with a gauge to have at least 4/32 inch minimum depth on steer tires, and 2/32 inch on all other tires. Steer tires are virgin rubber, not recaps."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rims & Lug Nuts -->
+          <div class="script-card" data-id="rims-lugs">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Rims, Lug Nuts &amp; Studs</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Rims and lug nuts check. Wheel rim has no cracks, no dents, no illegal welds, and no rust trails indicating loose rim. All lug nuts are present and tight, with no rust trails or shiny threads that indicate loose lug nuts. Studs are not missing, stripped, loose, or broken.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <div class="detail-bullets">
+                <div><strong>Rims:</strong> No cracks, dents, bends, illegal welds, or elongated bolt holes.</div>
+                <div><strong>Lug Nuts:</strong> All present, none missing; check for <strong>rust trails</strong> on steel rims or <strong>shiny metal threads</strong> on aluminum wheels (evidence of looseness).</div>
+                <div><strong>Studs:</strong> None missing, loose, stripped, or broken.</div>
+              </div>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"The wheel rims have no cracks, dents, bends, or unauthorized repair welds, and bolt holes are not elongated. All lug nuts are present and tight—there are no rust streaks or shiny threads which would indicate looseness. Wheel studs are not missing, loose, or broken."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Springs, Mounts, U-Bolts, Shocks -->
+          <div class="script-card" data-id="suspension">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Springs, Mounts, U-Bolts, Shocks (+ Level Check)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Suspension check. First, verify the vehicle sits level side to side and front to back. Leaf springs are secure, not shifted, cracked, missing, or broken. Spring hangers and mounts not cracked, broken, or missing parts. U-bolts are tight, none missing, loose, or broken. Shock absorber is securely mounted, no damage, no oil leaks.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <div class="detail-bullets">
+                <div><strong>Vehicle Stance:</strong> Truck sits level side-to-side and front-to-back (not leaning).</div>
+                <div><strong>Springs:</strong> Leaf springs properly aligned, not shifted, scissored, cracked, or broken.</div>
+                <div><strong>Mounts:</strong> Spring hangers, shackles, and bushings secure, not broken or worn.</div>
+                <div><strong>U-Bolts:</strong> Both U-bolts securely clamping axle, nuts tight, not broken.</div>
+                <div><strong>Shock Absorbers:</strong> Securely mounted top and bottom, no dents, no hydraulic fluid leaks.</div>
+              </div>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"Looking at vehicle stance, the truck sits level side-to-side and front-to-back. The leaf springs are secure, none shifted, cracked, missing, or broken. Spring mounts and hangers are not cracked, broken, or missing hardware. U-bolts are tight and undamaged with no missing nuts. The shock absorber is securely mounted top and bottom with no damage or hydraulic oil leaks."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brake Lines, Hoses & Contaminates -->
+          <div class="script-card" data-id="brake-lines">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Brake Lines, Hoses, Leaks &amp; Brake Contaminates</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Brake lines and contaminates check. Air brake hoses and lines are supplying air with no leaks, not cracked, frayed, or worn, and all couplings and fittings are secure. Brake linings and brake drums are clean and free of oil, grease, or contaminants.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <div class="detail-bullets">
+                <div><strong>Brake Lines / Hoses:</strong> Supply air lines secure, no audible leaks, not cracked, frayed, or worn; fittings tight.</div>
+                <div><strong>Brake Contaminates:</strong> Brake shoes/pads and brake drums/rotors are free from oil, grease, brake fluid, or debris; linings not worn dangerously thin.</div>
+              </div>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"Air brake lines and hoses are securely mounted, no audible air leaks, not cracked, frayed, or worn, and all fittings are secure. Inspecting brake friction surfaces: brake drums and linings are clean, free of oil, grease, or contaminants, and linings have sufficient friction material thickness."</em></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Zone 5: Side of Vehicle -->
+      <div class="inspection-zone" id="zone-side">
+        <div class="zone-header">
+          <div class="zone-badge">SECTION 5 &bull; SIDE SAFETY &amp; STRUCTURE</div>
+          <h3>Side of Vehicle, Battery, Tanks &amp; Frame</h3>
+        </div>
+
+        <div class="checklist-grid">
+
+          <!-- Battery -->
+          <div class="script-card card-highlight" data-id="battery-box">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Battery (Secure Lid, Tight, Corrosion &amp; Frayed Wires)</h4>
+              </div>
+              <div class="card-controls">
+                <span class="badge badge-accent">Circled Notes: Corrosion, Frayed</span>
+                <button class="btn-audio-speak" data-text="Battery inspection. Battery box cover is securely latched. Batteries are securely held down inside. Terminals and cable connections are tight and free of excessive corrosion. Wiring cables are not cracked, worn, or frayed.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <div class="spec-grid">
+                <div class="spec-item">
+                  <span class="spec-label">Battery Cover</span>
+                  <span class="spec-val">Lid locked / secure</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Mounting</span>
+                  <span class="spec-val">Batteries firmly secured in tray</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Corrosion (Circled)</span>
+                  <span class="spec-val">Terminals clean, no white/green buildup</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Frayed (Circled)</span>
+                  <span class="spec-val">Insulation intact, NO exposed/frayed wire</span>
+                </div>
+              </div>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"The battery box lid is secure. Batteries are tightly secured inside. Cable connections are tight with NO CORROSION on terminals, and battery cables are not cracked, worn, or FRAYED."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fuel & DEF Tanks -->
+          <div class="script-card" data-id="fuel-tanks">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Fuel Tank(s) / DEF Tank (Secure, Tight, Leaks Top/Bottom)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Fuel and DEF tank inspection. Fuel tanks and DEF tank are securely mounted with intact mounting straps and rubber cushions. Fuel caps are tight, seals in place, and there are no fuel or DEF leaks from the top, bottom, lines, or drain plugs.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <p><strong>Look For:</strong> Mounting brackets/straps tight with rubber isolator pads; caps tight; no leaks from top filler neck or bottom drain/fittings.</p>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"Fuel and DEF tanks are securely mounted with undamaged straps and rubber isolators. Tank caps are on tight with rubber gaskets intact, and there are no leaks from the top or bottom of the tanks or fuel lines."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frame & Crossmembers -->
+          <div class="script-card" data-id="truck-frame">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Frame &amp; Structural Components (Cracks, Welds, Holes)</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Truck frame inspection. Frame longitudinal rails and crossmembers have no cracks, broken welds, unauthorized drilled holes, or structural damage. Floor and decking are solid with no holes or missing boards.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <p><strong>Note from Sheet:</strong> <em>"truck cracks, broken welds, holes, damage to other parts, holes in floor"</em></p>
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"The truck frame rails and crossmembers have no cracks, bends, broken welds, or unauthorized drilled holes. There is no damage to other structural parts, and the floor deck has no holes or structural failure."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Lenses & Traffic Monitoring -->
+          <div class="script-card" data-id="side-reflectors">
+            <div class="script-card-header">
+              <div class="item-title">
+                <span class="status-dot"></span>
+                <h4>Side Lenses, Reflectors &amp; Traffic Devices</h4>
+              </div>
+              <div class="card-controls">
+                <button class="btn-audio-speak" data-text="Side lenses, reflectors, and mirrors. Side lenses and reflective tape are proper color, clean, none broken or missing. Traffic monitoring mirrors and brackets are clean, not cracked, bent, securely mounted, and have no missing parts.">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+                </button>
+              </div>
+            </div>
+            <div class="script-body">
+              <div class="verbal-box">
+                <div class="verbal-label">VERBAL SCRIPT:</div>
+                <p><em>"Side marker lights, reflectors, and DOT reflective tape are clean, proper amber color toward front, not broken or missing. Traffic monitoring brackets are rigidly attached, not bent or cracked, with all hardware secure."</em></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Zone 6: Rear of ALL Vehicles & Excluded Notes -->
+      <div class="inspection-zone" id="zone-rear">
+        <div class="zone-header">
+          <div class="zone-badge">SECTION 6 &bull; REAR OF ALL VEHICLES &amp; TEST SCOPE</div>
+          <h3>Rear of ALL Vehicles &amp; Study Notes</h3>
+        </div>
+
+        <div class="script-card" data-id="rear-check">
+          <div class="script-card-header">
+            <div class="item-title">
+              <span class="status-dot"></span>
+              <h4>Rear of ALL Vehicles Inspection</h4>
+            </div>
+            <div class="card-controls">
+              <button class="btn-audio-speak" data-text="Rear of all vehicles check. Tail lights, brake lights, reverse lights, and license plate light are clean, red, and working. Mud flaps and splash guards are securely mounted, not torn, and not dragging the ground. Rear doors and cargo latches are closed and securely locked.">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+              </button>
+            </div>
+          </div>
+          <div class="script-body">
+            <div class="detail-bullets">
+              <div><strong>Rear Lights:</strong> Tail lights, brake lights, 4-ways, turn signals, and clearance lights are red, clean, and unbroken. Reverse light and license plate light working.</div>
+              <div><strong>Mud Flaps / Splash Guards:</strong> Securely mounted, undamaged, not dragging on ground.</div>
+              <div><strong>Cargo / Doors:</strong> Rear doors closed, latches secured, seals intact.</div>
+            </div>
+            <div class="note-box">
+              <strong>📝 Note Regarding Blacked-Out Lines on Photo:</strong>
+              <p>On Dillon Mitchell's checklist, items such as trailer tandems and 5th-wheel coupling were marked out with black pen. This occurs when taking a straight truck / Class B test, or when focusing on a specific test section assigned by your examiner. Review our simulator to customize your test mode.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 2: EXACT WORD FILL-IN-THE-BLANK DRILL      -->
+    <!-- ============================================== -->
+    <section class="tab-pane" id="pane-typing">
+      <div class="section-hero">
+        <div class="hero-left">
+          <span class="tag tag-accent">Checklist Memory Muscle</span>
+          <h2>Exact Word Fill-in-the-Blank Study Drill</h2>
+          <p>Master the exact words and failure descriptors directly from Dillon Mitchell's study sheet (e.g. <em>color, clean, missing, broken</em> &bull; <em>cracked, bent, welding, rust trails</em> &bull; <em>corrosion, frayed</em>). Type the missing words into the blanks. <strong>If you get it wrong 2 times, a hint will automatically unlock!</strong></p>
+        </div>
+        <div class="quick-stats">
+          <div class="stat-card">
+            <span class="stat-num" id="type-mastered-count">0</span>
+            <span class="stat-label">Items Mastered</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="type-attempt-display">0/2</span>
+            <span class="stat-label">Misses on Current Item</span>
+          </div>
+          <div class="stat-card fail-highlight" id="type-hint-stat-card">
+            <span class="stat-num" id="type-hint-status">LOCKED</span>
+            <span class="stat-label">Hint Status (After 2 Misses)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter Chips -->
+      <div class="category-filter-bar">
+        <span class="filter-label">Jump to Section:</span>
+        <button class="type-filter-chip active" data-type-filter="all">All Items (32)</button>
+        <button class="type-filter-chip" data-type-filter="incab">🚨 In-Cab &amp; Air Brakes</button>
+        <button class="type-filter-chip" data-type-filter="engine">⚙️ Engine &amp; Steering</button>
+        <button class="type-filter-chip" data-type-filter="tires">🛞 Tires &amp; Wheels</button>
+        <button class="type-filter-chip" data-type-filter="suspension">🔩 Suspension &amp; Brakes</button>
+        <button class="type-filter-chip" data-type-filter="side">🔋 Side, Battery &amp; Frame</button>
+      </div>
+
+      <!-- Quick Item Selector Dropdown -->
+      <div class="cloze-quick-select-bar">
+        <label for="cloze-item-select" class="select-label">Select Checklist Item:</label>
+        <select id="cloze-item-select" class="cloze-select">
+          <!-- Populated by JS -->
+        </select>
+      </div>
+
+      <!-- Main Fill-in-the-Blank Drill Card -->
+      <div class="type-drill-container">
+        <div class="type-drill-card" id="cloze-card">
+          
+          <!-- Drill Meta Header -->
+          <div class="type-card-header">
+            <div class="type-header-left">
+              <span class="fc-category-badge" id="type-category-badge">Front of Vehicle / Engine Area</span>
+              <span class="type-progress-badge">Item <strong id="type-current-idx">11</strong> of <strong id="type-total-idx">32</strong></span>
+            </div>
+            <div class="type-header-right">
+              <span class="badge badge-accent" id="type-circled-pill">Circled: broken</span>
+              <button class="btn-audio-speak" id="type-audio-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
+              </button>
+            </div>
+          </div>
+
+          <!-- Prompt & Component Title -->
+          <div class="cloze-prompt-box">
+            <div class="cloze-component-name" id="cloze-component-name">
+              <span class="cloze-bullet">&#9632;</span>
+              <h3 id="cloze-item-title">lenses</h3>
+            </div>
+            <p class="cloze-instruction" id="cloze-item-instruction">
+              Fill in all 4 exact words you must check for this item:
+            </p>
+          </div>
+
+          <!-- Interactive Inline Blanks Area -->
+          <div class="cloze-blanks-container" id="cloze-blanks-container">
+            <!-- Dynamic interactive input blanks rendered by JS -->
+          </div>
+
+          <!-- Actions Bar -->
+          <div class="type-actions-bar">
+            <div class="type-actions-left">
+              <button class="btn btn-primary" id="btn-type-submit">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Check My Words
+              </button>
+              <button class="btn btn-outline" id="btn-type-clear">Clear Blanks</button>
+            </div>
+
+            <div class="type-actions-right">
+              <!-- Hint Button (Locked until 2 wrong attempts) -->
+              <button class="btn btn-hint locked" id="btn-type-hint" disabled title="Locked: You must attempt twice before hint unlocks">
+                <span class="hint-icon">🔒</span>
+                <span id="hint-btn-text">Hint Locked (Need 2 Misses)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Result & Error Feedback Box -->
+          <div class="type-feedback-container hidden" id="type-feedback-box">
+            <!-- Green success or Red retry with guidance -->
+          </div>
+
+          <!-- Hint Reveal Container (Unlocks after 2 misses) -->
+          <div class="type-hint-reveal hidden" id="type-hint-reveal">
+            <div class="hint-reveal-header">
+              <div class="hint-title">
+                <span class="hint-star">💡</span>
+                <strong>EXAM HINT &bull; FIRST-LETTER CLUES &amp; WORD BANK</strong>
+              </div>
+              <span class="badge badge-accent">Unlocked After 2 Misses</span>
+            </div>
+            <div class="hint-reveal-body" id="type-hint-content">
+              <!-- Inserted by JS: First letters, word bank, and study note -->
+            </div>
+          </div>
+
+          <!-- Navigation Footer -->
+          <div class="type-nav-footer">
+            <button class="btn btn-secondary" id="btn-type-prev">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+              Previous Item
+            </button>
+            <div class="type-footer-center">
+              <span class="type-item-indicator" id="type-nav-indicator">Item 11 of 32</span>
+            </div>
+            <button class="btn btn-secondary" id="btn-type-next">
+              Next Item
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 3: MOCK INSPECTION SIMULATOR               -->
+    <!-- ============================================== -->
+    <section class="tab-pane" id="pane-simulator">
+      <div class="sim-header">
+        <div>
+          <h2>Interactive Pre-Trip Inspection Simulator</h2>
+          <p>Practice checking off items in real-time just like during the state exam. Test timer and auto-fail detection enabled.</p>
+        </div>
+        <div class="sim-controls">
+          <div class="timer-box">
+            <span class="timer-label">TEST TIMER:</span>
+            <span class="timer-display" id="sim-timer">00:00</span>
+          </div>
+          <button class="btn btn-outline" id="btn-timer-toggle">Start Timer</button>
+          <button class="btn btn-primary" id="btn-sim-reset">Reset Checklist</button>
+        </div>
+      </div>
+
+      <!-- Live Score Dashboard -->
+      <div class="score-dashboard">
+        <div class="score-card">
+          <span class="score-title">Items Completed</span>
+          <div class="score-val"><span id="sim-completed-count">0</span> / <span id="sim-total-count">20</span></div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="sim-progress-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="score-card" id="airbrake-status-card">
+          <span class="score-title">Air Brake (PLAB) Status</span>
+          <div class="status-badge status-pending" id="sim-plab-status">NOT COMPLETED</div>
+          <p class="score-sub">Mandatory for passing score</p>
+        </div>
+
+        <div class="score-card" id="exam-verdict-card">
+          <span class="score-title">Exam Verdict</span>
+          <div class="verdict-display verdict-inprogress" id="sim-verdict">IN PROGRESS</div>
+          <p class="score-sub" id="sim-verdict-sub">Complete all items</p>
+        </div>
+      </div>
+
+      <!-- Auto-fail alert banner if triggered -->
+      <div class="sim-alert-box hidden" id="sim-fail-alert">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <strong>CRITICAL SAFETY TEST FAILED:</strong>
+          <span>Skipping or incorrectly verbalizing the Air Brake Check causes an instant DMV failure. Check off all PLAB steps to clear this warning!</span>
+        </div>
+      </div>
+
+      <!-- Simulator Checklist Items -->
+      <div class="sim-checklist-container">
+        <!-- Rendered via JavaScript for reactive state tracking -->
+        <div id="sim-items-list" class="sim-items-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 3: FLASHCARDS & MEMORY LAB                 -->
+    <!-- ============================================== -->
+    <section class="tab-pane" id="pane-flashcards">
+      <div class="flashcards-hero">
+        <div>
+          <h2>CDL Pre-Trip Flashcards &amp; Memory Practice</h2>
+          <p>Master key specifications: 4/32" vs 2/32" tread, 60 PSI buzzer, 20-45 PSI pop-out, cotter pins, and verbal points.</p>
+        </div>
+        <div class="fc-filters">
+          <button class="fc-filter-btn active" data-fc-filter="all">All (20)</button>
+          <button class="fc-filter-btn" data-fc-filter="critical">🚨 Critical / Auto-Fail</button>
+          <button class="fc-filter-btn" data-fc-filter="engine">⚙️ Engine &amp; Steering</button>
+          <button class="fc-filter-btn" data-fc-filter="tires">🛞 Tires &amp; Brakes</button>
+          <button class="fc-filter-btn" data-fc-filter="incab">🚚 In-Cab &amp; Lights</button>
+        </div>
+      </div>
+
+      <div class="flashcard-deck-wrapper">
+        <div class="fc-meta-bar">
+          <span class="fc-counter">Card <strong id="fc-current-index">1</strong> of <strong id="fc-total-index">20</strong></span>
+          <span class="fc-category-badge" id="fc-category-label">CRITICAL AIR BRAKES</span>
+        </div>
+
+        <div class="flashcard-scene" id="flashcard-container">
+          <div class="flashcard" id="active-flashcard">
+            <!-- Front -->
+            <div class="card-face card-front">
+              <div class="fc-top">
+                <span class="fc-prompt-tag">QUESTION / INSPECTION ITEM</span>
+                <span class="fc-hint-tag">Tap to reveal answer</span>
+              </div>
+              <div class="fc-center">
+                <h3 id="fc-front-title">What are the 4 steps of the Air Brake Check (PLAB)?</h3>
+                <p id="fc-front-subtitle">What is the automatic failure criteria?</p>
+              </div>
+              <div class="fc-bottom">
+                <span>🔄 Click anywhere to flip card</span>
+              </div>
+            </div>
+            <!-- Back -->
+            <div class="card-face card-back">
+              <div class="fc-top">
+                <span class="fc-prompt-tag success">EXACT ANSWER &bull; WHAT TO VERBALIZE</span>
+              </div>
+              <div class="fc-center">
+                <div class="fc-back-content" id="fc-back-content">
+                  <!-- Filled via JS -->
+                </div>
+              </div>
+              <div class="fc-bottom">
+                <span>🔄 Click to flip back</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard Controls -->
+        <div class="fc-controls">
+          <button class="btn btn-secondary" id="fc-btn-prev">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Previous
+          </button>
+          <div class="fc-mastery-actions">
+            <button class="btn btn-review" id="fc-btn-review">⚠️ Need Review</button>
+            <button class="btn btn-mastered" id="fc-btn-mastered">✅ Mastered</button>
+          </div>
+          <button class="btn btn-secondary" id="fc-btn-next">
+            Next
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 4: EXAM QUIZ CHALLENGE                     -->
+    <!-- ============================================== -->
+    <section class="tab-pane" id="pane-quiz">
+      <div class="quiz-container">
+        <div class="quiz-header">
+          <div>
+            <h2>CDL Pre-Trip Test Knowledge Challenge</h2>
+            <p>10 realistic examination questions derived directly from Dillon Mitchell's checklist notes.</p>
+          </div>
+          <div class="quiz-score-badge">
+            Score: <span id="quiz-score">0</span> / <span id="quiz-total-q">10</span>
+          </div>
+        </div>
+
+        <div id="quiz-question-box" class="quiz-card">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="quiz-footer">
+          <div class="quiz-progress-text">Question <span id="quiz-current-num">1</span> of 10</div>
+          <button class="btn btn-primary hidden" id="quiz-btn-next">Next Question &rarr;</button>
+          <button class="btn btn-primary hidden" id="quiz-btn-restart">Restart Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 5: ORIGINAL STUDY PHOTO REFERENCE          -->
+    <!-- ============================================== -->
+    <section class="tab-pane" id="pane-original-sheet">
+      <div class="sheet-viewer-header">
+        <div>
+          <h2>Original Pre-Trip Inspection Study Sheet</h2>
+          <p>Dillon Mitchell's original study sheet photo with interactive zoom, inspection hotspots, and circled item breakdown.</p>
+        </div>
+        <div class="sheet-tools">
+          <button class="btn btn-outline" id="btn-zoom-in">Zoom In (+)</button>
+          <button class="btn btn-outline" id="btn-zoom-out">Zoom Out (-)</button>
+          <button class="btn btn-outline" id="btn-zoom-reset">Reset Zoom</button>
+        </div>
+      </div>
+
+      <div class="sheet-layout">
+        <div class="sheet-image-frame" id="photo-frame">
+          <img src="assets/pre-inspection.jpg" alt="Dillon Mitchell Pre-Trip Inspection Study Sheet" id="study-photo" class="zoomable-photo">
+        </div>
+
+        <div class="sheet-legend-sidebar">
+          <h3>📌 Key Circled &amp; Highlighted Notes</h3>
+          <p class="legend-sub">Items specifically marked on this sheet by Dillon Mitchell:</p>
+          
+          <div class="legend-cards">
+            <div class="legend-item" data-focus="airbrakes">
+              <div class="legend-badge alert">* Automatic Failure</div>
+              <h4>Air Brake Check (PLAB)</h4>
+              <p>Top starred item: Failing any step of the PLAB procedure is an automatic failure of the entire CDL pre-trip exam.</p>
+            </div>
+
+            <div class="legend-item" data-focus="cotterpin">
+              <div class="legend-badge">Circled on Sheet</div>
+              <h4>Cotter Pin (Hardware)</h4>
+              <p>Circled under Steering hardware: Castle nuts MUST have their cotter pin inserted and bent to prevent steering failure.</p>
+            </div>
+
+            <div class="legend-item" data-focus="tread">
+              <div class="legend-badge">Circled on Sheet</div>
+              <h4>4/32" &amp; 2/32" Tread Depth</h4>
+              <p>Circled under Tires: <strong>4/32"</strong> minimum tread depth on front steer tires; <strong>2/32"</strong> minimum depth on all other tires.</p>
+            </div>
+
+            <div class="legend-item" data-focus="battery">
+              <div class="legend-badge">Circled on Sheet</div>
+              <h4>Battery: Corrosion &amp; Frayed</h4>
+              <p>Circled under Battery section: Must check battery terminals for <strong>corrosion</strong> and battery wires for <strong>frayed</strong> cables.</p>
+            </div>
+
+            <div class="legend-item" data-focus="lenses">
+              <div class="legend-badge">Circled on Sheet</div>
+              <h4>Lenses: "Broken"</h4>
+              <p>Circled under front lenses: Lenses must not be broken or cracked, and must be clean and proper color.</p>
+            </div>
+
+            <div class="legend-item" data-focus="blackout">
+              <div class="legend-badge info">Blacked-Out Marker</div>
+              <h4>Crossed-Out Trailer / Tandem Sections</h4>
+              <p>The trailer tandem and coupling section was blacked out, which designates this study sheet for a Class B / Straight Truck exam configuration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 6: MNEMONICS & CHEAT SHEET                 -->
+    <!-- ============================================== -->
+    <section class="tab-pane" id="pane-mnemonics">
+      <div class="section-hero">
+        <div>
+          <span class="tag tag-accent">Exam Day Memory Keys</span>
+          <h2>CDL Pre-Trip Inspection Mnemonics</h2>
+          <p>Use these memory keys to recall all inspection procedures under pressure during the state exam.</p>
+        </div>
+      </div>
+
+      <div class="mnemonics-grid">
+        
+        <!-- PLAB -->
+        <div class="mnemonic-card">
+          <div class="m-head">
+            <span class="m-code">P - L - A - B</span>
+            <h3>Air Brake Check Sequence</h3>
+          </div>
+          <div class="m-body">
+            <div class="m-step"><strong>P = Pressure Drop:</strong> Key ON, engine OFF, release brakes, hold service brake for 1 min. Max 3 PSI drop (single) or 4 PSI drop (combo).</div>
+            <div class="m-step"><strong>L = Low Air Warning:</strong> Fan brakes down. Light &amp; buzzer must sound at or above <strong>60 PSI</strong>.</div>
+            <div class="m-step"><strong>A = Air Pop-Out:</strong> Continue fanning down. Valves pop out automatically between <strong>20 - 45 PSI</strong>.</div>
+            <div class="m-step"><strong>B = Build-Up &amp; Cut-Out:</strong> Start engine. 85 to 100 PSI within 45 sec. Governor cuts OUT at <strong>120 - 140 PSI</strong>.</div>
+          </div>
+        </div>
+
+        <!-- ICD -->
+        <div class="mnemonic-card">
+          <div class="m-head">
+            <span class="m-code">I - C - D</span>
+            <h3>Tire Inspection Rule</h3>
+          </div>
+          <div class="m-body">
+            <div class="m-step"><strong>I = Inflation:</strong> Check cold pressure with air gauge at accessible valve stem; valve cap present.</div>
+            <div class="m-step"><strong>C = Condition:</strong> Even wear, no cuts, no exposed wires/cords, no bumps or bulges in tread or sidewall.</div>
+            <div class="m-step"><strong>D = Depth:</strong> Minimum <strong>4/32"</strong> on steer tires; minimum <strong>2/32"</strong> on all drive and trailer tires.</div>
+          </div>
+        </div>
+
+        <!-- PMS -->
+        <div class="mnemonic-card">
+          <div class="m-head">
+            <span class="m-code">P - M - S</span>
+            <h3>Mounting Universal Standard</h3>
+          </div>
+          <div class="m-body">
+            <p>Every single bracket, tank, steering box, suspension mount, and mirror must be verbalized as:</p>
+            <div class="m-quote">"<strong>P</strong>roperly <strong>M</strong>ounted and <strong>S</strong>ecure, with no missing bolts or hardware."</div>
+          </div>
+        </div>
+
+        <!-- CDL Leaks -->
+        <div class="mnemonic-card">
+          <div class="m-head">
+            <span class="m-code">C - D - L</span>
+            <h3>Damage Universal Standard</h3>
+          </div>
+          <div class="m-body">
+            <p>Check every hose, pipe, reservoir, and metal component for:</p>
+            <div class="m-quote">"Not <strong>C</strong>racked, Not <strong>D</strong>amaged, and Not <strong>L</strong>eaking."</div>
+          </div>
+        </div>
+
+        <!-- External Lights -->
+        <div class="mnemonic-card">
+          <div class="m-head">
+            <span class="m-code">L - R - 4 - C - H - L</span>
+            <h3>Lights Sequence from Sheet</h3>
+          </div>
+          <div class="m-body">
+            <div class="m-step"><strong>L:</strong> Left Turn Signal</div>
+            <div class="m-step"><strong>R:</strong> Right Turn Signal</div>
+            <div class="m-step"><strong>4:</strong> 4-Way Emergency Hazards</div>
+            <div class="m-step"><strong>C:</strong> Clearance / Marker Lights</div>
+            <div class="m-step"><strong>H / L:</strong> Headlights (High Beam &amp; Low Beam)</div>
+          </div>
+        </div>
+
+        <!-- Emergency Kit -->
+        <div class="mnemonic-card">
+          <div class="m-head">
+            <span class="m-code">F - E - T</span>
+            <h3>Emergency Equipment</h3>
+          </div>
+          <div class="m-body">
+            <div class="m-step"><strong>F = Fuses:</strong> Spare electrical fuses of every rating.</div>
+            <div class="m-step"><strong>E = Extinguisher:</strong> Fully charged (gauge green), pin secured, rated 10 B:C or 5 B:C.</div>
+            <div class="m-step"><strong>T = Triangles:</strong> 3 red reflective warning triangles in good condition.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <p><strong>CDL Pre-Trip Inspection Study Lab</strong> &bull; Based on Student Dillon Mitchell's Study Checklist</p>
+        <p class="footer-copy">Practice regularly before your official DMV road &amp; pre-trip inspection test.</p>
+      </div>
+      <div class="footer-right">
+        <span class="badge badge-accent">CDL Class A &amp; B Standard</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
