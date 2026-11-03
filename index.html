@@ -62,8 +62,8 @@
           <span>6. Original Study Photo</span>
         </button>
         <button class="nav-tab" data-tab="mnemonics">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <span>7. Mnemonics Cheat Sheet</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>7. Questions Cheat Sheet &amp; Keys</span>
         </button>
       </div>
     </nav>
@@ -817,12 +817,18 @@
         <button class="type-filter-chip" data-type-filter="side">🔋 Side, Battery &amp; Frame</button>
       </div>
 
-      <!-- Quick Item Selector Dropdown -->
-      <div class="cloze-quick-select-bar">
-        <label for="cloze-item-select" class="select-label">Select Checklist Item:</label>
-        <select id="cloze-item-select" class="cloze-select">
-          <!-- Populated by JS -->
-        </select>
+      <!-- Quick Item Selector Dropdown & Question Cheat Sheet Quick Button -->
+      <div class="cloze-top-controls">
+        <div class="cloze-quick-select-bar">
+          <label for="cloze-item-select" class="select-label">Select Checklist Item:</label>
+          <select id="cloze-item-select" class="cloze-select">
+            <!-- Populated by JS -->
+          </select>
+        </div>
+        <button class="btn btn-outline btn-cheat-trigger" id="btn-open-question-cheatsheet" title="View all 34 questions and exact answer keys">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          📋 Questions Cheat Sheet
+        </button>
       </div>
 
       <!-- Main Fill-in-the-Blank Drill Card -->
@@ -1070,8 +1076,23 @@
 
         <div class="quiz-footer">
           <div class="quiz-progress-text">Question <span id="quiz-current-num">1</span> of 10</div>
+          <button class="btn btn-outline btn-sm" id="btn-toggle-quiz-cheatsheet">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            📋 Show Quiz Answer Key Cheat Sheet
+          </button>
           <button class="btn btn-primary hidden" id="quiz-btn-next">Next Question &rarr;</button>
           <button class="btn btn-primary hidden" id="quiz-btn-restart">Restart Quiz</button>
+        </div>
+
+        <!-- Quiz Answer Key Cheat Sheet Dropdown -->
+        <div class="quiz-cheatsheet-container hidden" id="quiz-cheatsheet-container">
+          <div class="quiz-cs-header">
+            <h4>🎯 Official Quiz Questions &amp; Answer Key</h4>
+            <span class="badge badge-accent">All 10 Exam Questions</span>
+          </div>
+          <div class="quiz-cs-list" id="quiz-cs-list">
+            <!-- Populated by JS -->
+          </div>
         </div>
       </div>
     </section>
@@ -1143,15 +1164,60 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- TAB 6: MNEMONICS & CHEAT SHEET                 -->
+    <!-- TAB 7: QUESTIONS CHEAT SHEET & MNEMONICS       -->
     <!-- ============================================== -->
     <section class="tab-pane" id="pane-mnemonics">
       <div class="section-hero">
         <div>
-          <span class="tag tag-accent">Exam Day Memory Keys</span>
-          <h2>CDL Pre-Trip Inspection Mnemonics</h2>
-          <p>Use these memory keys to recall all inspection procedures under pressure during the state exam.</p>
+          <span class="tag tag-accent">Master Study Reference</span>
+          <h2>Pre-Trip Inspection Questions &amp; Answer Key Cheat Sheet</h2>
+          <p>Instant reference for all 34 inspection checklist questions, required exact words, failure criteria, and CDL mnemonics from Dillon Mitchell's test paper.</p>
         </div>
+      </div>
+
+      <!-- Master Questions Cheat Sheet Search & Filter -->
+      <div class="master-cs-wrapper">
+        <div class="cs-controls-bar">
+          <div class="modal-search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="tab7-search-input" placeholder="Search questions & answers (e.g. lenses, rims, battery, lug nuts, belt)...">
+          </div>
+          <div class="modal-pills" id="tab7-pills">
+            <button class="cs-pill active" data-tab7-filter="all">All 34 Questions</button>
+            <button class="cs-pill" data-tab7-filter="incab">🚨 In-Cab</button>
+            <button class="cs-pill" data-tab7-filter="engine">⚙️ Engine</button>
+            <button class="cs-pill" data-tab7-filter="tires">🛞 Tires &amp; Wheels</button>
+            <button class="cs-pill" data-tab7-filter="suspension">🔩 Suspension</button>
+            <button class="cs-pill" data-tab7-filter="side">🔋 Side &amp; Rear</button>
+          </div>
+        </div>
+
+        <!-- Master Questions Table View -->
+        <div class="master-table-card">
+          <div class="table-responsive">
+            <table class="master-cs-table" id="master-questions-table">
+              <thead>
+                <tr>
+                  <th style="width: 48px;">#</th>
+                  <th style="width: 140px;">Zone</th>
+                  <th style="width: 220px;">Checklist Item / Question</th>
+                  <th>Exact Words Answer Key</th>
+                  <th style="width: 250px;">Examiner Notes / What to Look For</th>
+                  <th style="width: 130px; text-align: center;">Practice</th>
+                </tr>
+              </thead>
+              <tbody id="master-questions-tbody">
+                <!-- Dynamically populated by JS from clozeItems -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Title for Mnemonics -->
+      <div class="section-divider-title" style="margin-top: 3rem; margin-bottom: 1.5rem;">
+        <span class="tag tag-accent">Exam Day Memory Keys</span>
+        <h3>🧠 CDL Pre-Trip Inspection Mnemonics</h3>
       </div>
 
       <div class="mnemonics-grid">
@@ -1237,6 +1303,47 @@
 
       </div>
     </section>
+
+    <!-- ============================================== -->
+    <!-- QUESTION CHEAT SHEET MODAL OVERLAY             -->
+    <!-- ============================================== -->
+    <div class="modal-backdrop hidden" id="cheatsheet-modal" role="dialog" aria-modal="true" aria-labelledby="cs-modal-title">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div class="modal-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <h3 id="cs-modal-title">Pre-Trip Questions &amp; Exact Answer Keys Cheat Sheet</h3>
+          </div>
+          <button class="btn-modal-close" id="btn-close-cheatsheet" aria-label="Close Cheat Sheet">&times;</button>
+        </div>
+        
+        <div class="modal-filter-bar">
+          <div class="modal-search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="cheatsheet-search-input" placeholder="Search questions (e.g. lenses, rims, battery, lug nuts, belt)...">
+          </div>
+          <div class="modal-pills" id="cheatsheet-pills">
+            <button class="cs-pill active" data-cs-filter="all">All (34)</button>
+            <button class="cs-pill" data-cs-filter="incab">In-Cab</button>
+            <button class="cs-pill" data-cs-filter="engine">Engine</button>
+            <button class="cs-pill" data-cs-filter="tires">Tires</button>
+            <button class="cs-pill" data-cs-filter="suspension">Suspension</button>
+            <button class="cs-pill" data-cs-filter="side">Side/Rear</button>
+          </div>
+        </div>
+
+        <div class="modal-body-scrollable">
+          <div class="cheatsheet-items-grid" id="cheatsheet-items-container">
+            <!-- Dynamically populated cards by JS -->
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <span class="cs-footer-note">💡 Click <strong>"Practice In Drill"</strong> on any item to jump straight into typing it!</span>
+          <button class="btn btn-secondary btn-sm" id="btn-cheatsheet-done">Close Cheat Sheet</button>
+        </div>
+      </div>
+    </div>
 
   </main>
 

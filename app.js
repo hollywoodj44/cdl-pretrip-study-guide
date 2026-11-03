@@ -79,6 +79,17 @@ const SoundFX = (() => {
   };
 })();
 
+// HTML sanitizer helper
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 // =============================================================================
 // Speech Synthesis (Audio Narration)
 // =============================================================================
@@ -955,6 +966,40 @@ const QuizLab = (() => {
         currentQ = 0;
         score = 0;
         renderQuestion();
+      });
+    }
+
+    // Toggle Quiz Questions Cheat Sheet
+    const toggleCsBtn = document.getElementById('btn-toggle-quiz-cheatsheet');
+    const csContainer = document.getElementById('quiz-cheatsheet-container');
+    const csList = document.getElementById('quiz-cs-list');
+
+    if (toggleCsBtn && csContainer) {
+      toggleCsBtn.addEventListener('click', () => {
+        SoundFX.click();
+        const isHidden = csContainer.classList.contains('hidden');
+        if (isHidden) {
+          csContainer.classList.remove('hidden');
+          toggleCsBtn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+            Hide Quiz Answer Key Cheat Sheet
+          `;
+          if (csList && !csList.children.length) {
+            csList.innerHTML = questions.map((q, i) => `
+              <div class="quiz-cs-card">
+                <div class="quiz-cs-q-title">Question ${i + 1}: ${escapeHtml(q.q)}</div>
+                <div class="quiz-cs-correct-ans">✓ Correct Answer: <strong>${escapeHtml(q.options[q.correct])}</strong></div>
+                <div class="quiz-cs-expl"><strong>Explanation:</strong> ${escapeHtml(q.explanation)}</div>
+              </div>
+            `).join('');
+          }
+        } else {
+          csContainer.classList.add('hidden');
+          toggleCsBtn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            📋 Show Quiz Answer Key Cheat Sheet
+          `;
+        }
       });
     }
   }
@@ -1910,11 +1955,11 @@ const ClozeFillDrill = (() => {
         </div>
         <p class="feedback-details">
           ${currentMisses >= 2 
-            ? '<strong>💡 HINT UNLOCKED!</strong> You missed 2 times. Click the glowing "Show Hint" button to reveal first-letter cues and word assistance!' 
+            ? '<strong>💡 HINT UNLOCKED!</strong> You missed 2 times. Click the glowing "Show Hint" button to reveal the exact <strong>Answer Key of the words you missed</strong>!' 
             : `You got ${correctCount} of ${item.blanks.length} words correct. Fix the red blanks and try again! (Hint unlocks after 2 misses).`}
         </p>
         <div class="keyword-chips-row">
-          ${matchedWords.map(m => `<span class="kw-chip kw-matched">✓ ${m}</span>`).join('')}
+          ${matchedWords.map(m => `<span class="kw-chip kw-matched">✓ ${escapeHtml(m)}</span>`).join('')}
           ${missingWords.map(m => `<span class="kw-chip kw-missing">✗ Needs Correction</span>`).join('')}
         </div>
       `;
@@ -1938,39 +1983,185 @@ const ClozeFillDrill = (() => {
 
     hintReveal.classList.remove('hidden');
 
-    // 1. Show First Letter Clue in each blank slot
+    const container = document.getElementById('cloze-blanks-container');
+    const inputs = container ? container.querySelectorAll('.cloze-input') : [];
+
+    // Analyze each blank to see which ones the user missed or left blank
+    const missedList = [];
+    const correctList = [];
+
     item.blanks.forEach((b, i) => {
-      const cueEl = document.getElementById(`cloze-cue-${i}`);
-      if (cueEl) {
-        const firstLetter = b.answer.trim().charAt(0).toUpperCase();
-        cueEl.textContent = `Starts with: "${firstLetter}..."`;
+      const input = inputs[i];
+      const userVal = input ? input.value.trim() : '';
+      const userValLower = userVal.toLowerCase();
+
+      const isCorrect = b.accepted.some(acc => {
+        const cleanAcc = acc.toLowerCase().trim();
+        return userValLower === cleanAcc || 
+               userValLower.replace(/[^a-z0-9]/g, '') === cleanAcc.replace(/[^a-z0-9]/g, '');
+      });
+
+      if (isCorrect) {
+        correctList.push({
+          idx: i,
+          blankNum: i + 1,
+          label: b.label,
+          answer: b.answer
+        });
+      } else {
+        missedList.push({
+          idx: i,
+          blankNum: i + 1,
+          label: b.label,
+          answer: b.answer,
+          userVal: userVal,
+          hint: b.hint
+        });
       }
     });
 
-    // 2. Build Scrambled Word Bank chips
+    // 1. Update inline cues beneath each blank input
+    item.blanks.forEach((b, i) => {
+      const cueEl = document.getElementById(`cloze-cue-${i}`);
+      if (!cueEl) return;
+
+      const isMissed = missedList.some(m => m.idx === i);
+      if (isMissed) {
+        cueEl.innerHTML = `
+          <span class="cue-missed-highlight">
+            ❌ Missed: Answer is <strong>"${escapeHtml(b.answer)}"</strong>
+            <button class="btn-quick-fill-cue" data-idx="${i}" data-word="${escapeHtml(b.answer)}" title="Fill this blank">Fill</button>
+          </span>
+        `;
+      } else {
+        cueEl.innerHTML = `
+          <span class="cue-correct-highlight">
+            ✓ Correct! (${escapeHtml(b.answer)})
+          </span>
+        `;
+      }
+    });
+
+    // 2. Build the Missed Words Answer Key HTML
+    let missedHtml = '';
+    if (missedList.length > 0) {
+      missedHtml = `
+        <div class="hint-missed-keys-box">
+          <div class="missed-keys-header">
+            <div class="mkh-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2 2m-2-2l2 2m-6 6l7-7m-7 7l-2 2m-2-2l2 2"/></svg>
+              <span>🎯 ANSWER KEY FOR THE WORD${missedList.length > 1 ? 'S' : ''} YOU MISSED:</span>
+            </div>
+            <button class="btn-fill-all-missed" id="btn-fill-all-missed" title="Auto-fill all missed words into blanks">
+              ⚡ Auto-Fill Missed Words
+            </button>
+          </div>
+          <div class="missed-keys-list">
+            ${missedList.map(m => `
+              <div class="missed-key-row">
+                <div class="mkr-left">
+                  <span class="mkr-slot">Blank ${m.blankNum} (${escapeHtml(m.label)}):</span>
+                  <span class="mkr-answer-word">${escapeHtml(m.answer)}</span>
+                  ${m.userVal ? `<span class="mkr-your-attempt">(You typed: <del>${escapeHtml(m.userVal)}</del>)</span>` : '<span class="mkr-empty-note">(Left blank)</span>'}
+                </div>
+                <button class="btn-insert-single-answer" data-idx="${m.idx}" data-word="${escapeHtml(m.answer)}">
+                  Insert "${escapeHtml(m.answer)}" &rarr;
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    } else {
+      missedHtml = `
+        <div class="hint-missed-keys-box" style="border-color: var(--emerald-primary);">
+          <div class="mkh-title" style="color: #6ee7b7;">
+            <span>✓ All ${item.blanks.length} blanks are currently filled correctly! Click "Check My Words" to lock in your score!</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // 3. Word Bank Chips
     const words = item.blanks.map(b => b.answer);
     const shuffled = [...words].sort(() => 0.5 - Math.random());
 
     hintContent.innerHTML = `
-      <p style="margin-bottom: 0.5rem;"><strong>Word Bank (Click any word to fill it into the next blank):</strong></p>
-      <div class="cloze-hint-chips">
-        ${shuffled.map(w => `<button class="hint-word-tag" data-word="${w}">${w}</button>`).join('')}
+      ${missedHtml}
+      
+      <div class="full-key-summary">
+        <strong>Full Checklist Answer Key for ${escapeHtml(item.name)}:</strong> 
+        ${item.blanks.map((b, i) => `Blank ${i + 1}: <strong>${escapeHtml(b.answer)}</strong>`).join(' &bull; ')}
       </div>
-      <p style="margin-top: 0.75rem; font-size: 0.88rem; color: #fde68a;">
-        <strong>Examiner Clues:</strong> ${item.blanks.map((b, i) => `<em>Blank ${i + 1}: ${b.hint}</em>`).join(' &bull; ')}
+
+      <div style="margin-top: 1rem;">
+        <p style="margin-bottom: 0.5rem; font-size: 0.88rem; color: #fde68a;"><strong>Clickable Word Bank:</strong></p>
+        <div class="cloze-hint-chips">
+          ${shuffled.map(w => `<button class="hint-word-tag" data-word="${escapeHtml(w)}">${escapeHtml(w)}</button>`).join('')}
+        </div>
+      </div>
+
+      <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-dim);">
+        <strong>Examiner Guidance:</strong> ${item.blanks.map((b, i) => `<em>Blank ${i + 1}: ${escapeHtml(b.hint)}</em>`).join(' &bull; ')}
       </p>
-      ${item.circled ? `<div class="note-box" style="margin-top: 0.75rem;"><strong>📌 Note from Dillon Mitchell's Study Sheet:</strong> ${item.circled}</div>` : ''}
+
+      ${item.circled ? `<div class="note-box" style="margin-top: 0.75rem;"><strong>📌 Dillon Mitchell's Study Sheet Note:</strong> ${escapeHtml(item.circled)}</div>` : ''}
     `;
 
-    // Click word chip to insert
+    // 4. Attach Click Handlers for Instant Insert Buttons
+    // Auto-fill all missed
+    const fillAllBtn = document.getElementById('btn-fill-all-missed');
+    if (fillAllBtn) {
+      fillAllBtn.addEventListener('click', () => {
+        SoundFX.click();
+        missedList.forEach(m => {
+          if (inputs[m.idx]) {
+            inputs[m.idx].value = m.answer;
+            inputs[m.idx].className = 'cloze-input correct';
+          }
+          const cueEl = document.getElementById(`cloze-cue-${m.idx}`);
+          if (cueEl) cueEl.innerHTML = `<span class="cue-correct-highlight">✓ Inserted: ${escapeHtml(m.answer)}</span>`;
+        });
+      });
+    }
+
+    // Insert single answer from hint row
+    hintContent.querySelectorAll('.btn-insert-single-answer').forEach(btn => {
+      btn.addEventListener('click', () => {
+        SoundFX.click();
+        const idx = parseInt(btn.dataset.idx, 10);
+        const word = btn.dataset.word;
+        if (inputs[idx]) {
+          inputs[idx].value = word;
+          inputs[idx].className = 'cloze-input correct';
+          inputs[idx].focus();
+        }
+        const cueEl = document.getElementById(`cloze-cue-${idx}`);
+        if (cueEl) cueEl.innerHTML = `<span class="cue-correct-highlight">✓ Inserted: ${escapeHtml(word)}</span>`;
+      });
+    });
+
+    // Quick fill from cue below inputs
+    container.querySelectorAll('.btn-quick-fill-cue').forEach(btn => {
+      btn.addEventListener('click', () => {
+        SoundFX.click();
+        const idx = parseInt(btn.dataset.idx, 10);
+        const word = btn.dataset.word;
+        if (inputs[idx]) {
+          inputs[idx].value = word;
+          inputs[idx].className = 'cloze-input correct';
+          inputs[idx].focus();
+        }
+        const cueEl = document.getElementById(`cloze-cue-${idx}`);
+        if (cueEl) cueEl.innerHTML = `<span class="cue-correct-highlight">✓ Inserted: ${escapeHtml(word)}</span>`;
+      });
+    });
+
+    // Word Bank Tag click
     hintContent.querySelectorAll('.hint-word-tag').forEach(tag => {
       tag.addEventListener('click', () => {
         SoundFX.click();
         const word = tag.dataset.word;
-        // Find first empty or incorrect input
-        const container = document.getElementById('cloze-blanks-container');
-        if (!container) return;
-        const inputs = container.querySelectorAll('.cloze-input');
         for (let input of inputs) {
           if (!input.value.trim() || input.classList.contains('incorrect')) {
             input.value = word;
@@ -2035,7 +2226,270 @@ const ClozeFillDrill = (() => {
     });
   }
 
-  return { init };
+  function jumpToItem(itemId) {
+    const globalIdx = clozeItems.findIndex(ci => ci.id === itemId);
+    if (globalIdx === -1) return;
+
+    activeFilter = 'all';
+    filteredItems = [...clozeItems];
+    const chips = document.querySelectorAll('.type-filter-chip');
+    chips.forEach(c => {
+      if (c.dataset.typeFilter === 'all') c.classList.add('active');
+      else c.classList.remove('active');
+    });
+
+    currentIdx = globalIdx;
+    renderCloze();
+
+    // Switch to typing pane if needed
+    const typingTab = document.querySelector('.nav-tab[data-tab="typing"]');
+    if (typingTab && !typingTab.classList.contains('active')) {
+      typingTab.click();
+    }
+
+    const clozeCard = document.getElementById('cloze-card');
+    if (clozeCard) {
+      clozeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  return { 
+    init, 
+    jumpToItem, 
+    getAllItems: () => clozeItems 
+  };
+})();
+
+// =============================================================================
+// Question Cheat Sheet Engine (Modal & Tab 7 Master Table)
+// =============================================================================
+const QuestionCheatSheet = (() => {
+  let currentModalFilter = 'all';
+  let currentModalSearch = '';
+
+  function init() {
+    bindModalEvents();
+    bindTab7Events();
+    renderModalCards();
+    renderTab7Table();
+  }
+
+  function bindModalEvents() {
+    const modal = document.getElementById('cheatsheet-modal');
+    const openBtn = document.getElementById('btn-open-question-cheatsheet');
+    const closeBtn = document.getElementById('btn-close-cheatsheet');
+    const doneBtn = document.getElementById('btn-cheatsheet-done');
+    const searchInput = document.getElementById('cheatsheet-search-input');
+    const pills = document.querySelectorAll('#cheatsheet-pills .cs-pill');
+
+    if (openBtn) {
+      openBtn.addEventListener('click', () => {
+        SoundFX.click();
+        openModal();
+      });
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (doneBtn) doneBtn.addEventListener('click', closeModal);
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        currentModalSearch = searchInput.value.trim().toLowerCase();
+        renderModalCards();
+      });
+    }
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        SoundFX.click();
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentModalFilter = pill.dataset.csFilter;
+        renderModalCards();
+      });
+    });
+  }
+
+  function openModal() {
+    const modal = document.getElementById('cheatsheet-modal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      renderModalCards();
+      const input = document.getElementById('cheatsheet-search-input');
+      if (input) input.focus();
+    }
+  }
+
+  function closeModal() {
+    SoundFX.click();
+    const modal = document.getElementById('cheatsheet-modal');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function filterItems(items, filter, search) {
+    return items.filter(item => {
+      const matchesCat = filter === 'all' || item.category === filter;
+      if (!matchesCat) return false;
+      if (!search) return true;
+
+      const nameMatch = item.name.toLowerCase().includes(search);
+      const catMatch = item.catBadge.toLowerCase().includes(search);
+      const wordsMatch = item.blanks.some(b => b.answer.toLowerCase().includes(search) || (b.hint && b.hint.toLowerCase().includes(search)));
+      const noteMatch = item.circled && item.circled.toLowerCase().includes(search);
+      return nameMatch || catMatch || wordsMatch || noteMatch;
+    });
+  }
+
+  function renderModalCards() {
+    const container = document.getElementById('cheatsheet-items-container');
+    if (!container) return;
+
+    const allItems = ClozeFillDrill.getAllItems();
+    const filtered = filterItems(allItems, currentModalFilter, currentModalSearch);
+
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 2.5rem; color: var(--text-dim);">
+          <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">No questions matched your search "${escapeHtml(currentModalSearch)}".</p>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Try searching by component (e.g. lenses, rims, battery, lug nuts, belt).</span>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = filtered.map(item => {
+      const globalIdx = allItems.findIndex(ci => ci.id === item.id);
+      return `
+        <div class="cs-item-card">
+          <div>
+            <div class="cs-item-header">
+              <div class="cs-item-title-box">
+                <span class="cs-item-num">#${globalIdx + 1}</span>
+                <span class="cs-item-name">${escapeHtml(item.name)}</span>
+              </div>
+              <span class="cs-zone-badge">${escapeHtml(item.catBadge)}</span>
+            </div>
+            
+            <div class="cs-answer-keys-row" style="margin-top: 0.75rem;">
+              <span class="cs-answer-label">Exact Answer Key Words:</span>
+              <div class="cs-answer-chips">
+                ${item.blanks.map(b => `<span class="cs-word-tag">${escapeHtml(b.answer)}</span>`).join('')}
+              </div>
+            </div>
+
+            ${item.circled ? `<div class="cs-item-note"><strong>Study Note:</strong> ${escapeHtml(item.circled)}</div>` : ''}
+          </div>
+
+          <div class="cs-item-actions">
+            <button class="btn-practice-item" data-id="${item.id}">
+              ✍️ Practice In Drill &rarr;
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    container.querySelectorAll('.btn-practice-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        SoundFX.click();
+        const id = btn.dataset.id;
+        closeModal();
+        ClozeFillDrill.jumpToItem(id);
+      });
+    });
+  }
+
+  function bindTab7Events() {
+    const searchInput = document.getElementById('tab7-search-input');
+    const pills = document.querySelectorAll('#tab7-pills .cs-pill');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        renderTab7Table();
+      });
+    }
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        SoundFX.click();
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        renderTab7Table();
+      });
+    });
+  }
+
+  function renderTab7Table() {
+    const tbody = document.getElementById('master-questions-tbody');
+    if (!tbody) return;
+
+    const searchInput = document.getElementById('tab7-search-input');
+    const search = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    const activePill = document.querySelector('#tab7-pills .cs-pill.active');
+    const filter = activePill ? activePill.dataset.tab7Filter : 'all';
+
+    const allItems = ClozeFillDrill.getAllItems();
+    const filtered = filterItems(allItems, filter, search);
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" style="text-align: center; padding: 2.5rem; color: var(--text-dim);">
+            No checklist questions matched "${escapeHtml(search)}".
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    tbody.innerHTML = filtered.map(item => {
+      const globalIdx = allItems.findIndex(ci => ci.id === item.id);
+      return `
+        <tr>
+          <td><span class="table-num-badge">#${globalIdx + 1}</span></td>
+          <td><span class="cs-zone-badge">${escapeHtml(item.catBadge)}</span></td>
+          <td>
+            <span class="table-item-name">${escapeHtml(item.name)}</span>
+            ${item.circled ? `<div style="font-size: 0.78rem; color: var(--amber-light); margin-top: 0.2rem;">${escapeHtml(item.circled)}</div>` : ''}
+          </td>
+          <td>
+            <div class="table-answer-chips">
+              ${item.blanks.map(b => `<span class="table-word-pill">${escapeHtml(b.answer)}</span>`).join('')}
+            </div>
+          </td>
+          <td>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">${item.blanks.map(b => escapeHtml(b.hint)).join('; ')}</span>
+          </td>
+          <td style="text-align: center;">
+            <button class="btn btn-xs btn-outline btn-tab7-practice" data-id="${item.id}">
+              Practice &rarr;
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    tbody.querySelectorAll('.btn-tab7-practice').forEach(btn => {
+      btn.addEventListener('click', () => {
+        SoundFX.click();
+        ClozeFillDrill.jumpToItem(btn.dataset.id);
+      });
+    });
+  }
+
+  return { init, openModal, closeModal, renderModalCards, renderTab7Table };
 })();
 
 // =============================================================================
@@ -2045,8 +2499,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initAudioButtons();
   ClozeFillDrill.init();
+  QuestionCheatSheet.init();
   Simulator.init();
   FlashcardsLab.init();
   QuizLab.init();
   initPhotoViewer();
 });
+
