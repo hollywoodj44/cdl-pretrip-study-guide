@@ -25,7 +25,7 @@
       <div class="header-actions">
         <div class="warning-pill" id="auto-fail-banner" title="Crucial Warning: An error on Air Brakes is an automatic failure">
           <span class="pulse-indicator"></span>
-          <span class="warning-text"><strong>* AUTO-FAIL RULE:</strong> Air Brake Check (PLAB) must be 100% flawless</span>
+          <span class="warning-text"><strong>* AUTO-FAIL RULE:</strong> Air Brake Check (POOPSLAB) must be 100% flawless</span>
         </div>
         <button class="btn btn-audio-toggle" id="global-speech-btn" title="Toggle Audio Narration for Study Scripts">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
@@ -101,7 +101,7 @@
       <!-- Category Filter Pills -->
       <div class="category-filter-bar">
         <span class="filter-label">Jump to Section:</span>
-        <a href="#zone-in-cab" class="filter-chip">🚨 In-Cab &amp; Air Brakes (PLAB)</a>
+        <a href="#zone-in-cab" class="filter-chip">🚨 In-Cab &amp; Air Brakes (POOPSLAB)</a>
         <a href="#zone-lights" class="filter-chip">💡 Lights Operations</a>
         <a href="#zone-engine" class="filter-chip">⚙️ Engine &amp; Steering</a>
         <a href="#zone-suspension" class="filter-chip">🛞 Tires, Rims &amp; Suspension</a>
@@ -122,16 +122,16 @@
 
         <div class="checklist-grid">
 
-          <!-- Item 1: Air Brake PLAB -->
+          <!-- Item 1: Air Brake POOPSLAB -->
           <div class="script-card card-critical" data-id="plab">
             <div class="script-card-header">
               <div class="item-title">
                 <span class="status-dot alert-dot"></span>
-                <h4>* Air Brake Check (PLAB Test)</h4>
+                <h4>* Air Brake Check (POOPSLAB)</h4>
               </div>
               <div class="card-controls">
                 <span class="badge badge-danger">Automatic Failure Item</span>
-                <button class="btn-audio-speak" data-text="Air Brake Check PLAB. Step 1: Pressure drop test. Wheels chocked, release both parking and trailer brakes. Turn off engine, turn key ON. Fully apply service foot brake and hold for 1 minute. Must not lose more than 3 psi for single or 4 psi for combination vehicle. Step 2: Low air warning test. Pump or fan brake pedal. The low air warning light and buzzer must activate at or above 60 psi. Step 3: Air pop out spring brake test. Continue fanning brake pedal. Between 20 and 45 psi, the emergency parking brake tractor protection valves must pop out. Step 4: Build up and governor cut out test. Start engine, run at fast idle. Pressure should build from 85 to 100 psi within 45 seconds. Air compressor governor cut out must stop between 120 and 140 psi.">
+                <button class="btn-audio-speak" data-text="Air Brake Check POOPSLAB. P: Purge - governor cut-out between 120 and 140 psi with a purge sneeze. O: Off - turn engine off. O: On accessories - turn key to ON position. P: Push brake pedal and hold for 60 seconds. Must not lose more than 3 psi. S: Settle - let gauges settle, no less than 3 psi lost. L: Low air warning - fan brakes down, warning light and buzzer activate at or above 60 psi. A: Alarm pop-out - continue fanning, valves pop out between 20 and 40 psi. B: Build-up - start engine, pressure builds to 120 to 140 psi, governor cuts out with purge.">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
                 </button>
               </div>
@@ -139,21 +139,33 @@
 
             <div class="script-body">
               <div class="mnemonic-banner">
-                <div class="mnemonic-letter">P</div><span><strong>P - Pressure Drop:</strong> Chock wheels, release brakes, engine off, key ON. Press and hold foot brake 1 minute. Single vehicle: Max 3 PSI drop. Combination: Max 4 PSI drop.</span>
+                <div class="mnemonic-letter">P</div><span><strong>P - Purge:</strong> With engine running, build pressure. Governor cuts OUT between <strong>120 – 140 PSI</strong> with a clear purge sneeze.</span>
               </div>
               <div class="mnemonic-banner">
-                <div class="mnemonic-letter">L</div><span><strong>L - Low Air Warning:</strong> Fan/pump brake pedal. Warning buzzer and red light MUST activate at or above <strong>60 PSI</strong> (55-75 PSI range).</span>
+                <div class="mnemonic-letter">O</div><span><strong>O - Off:</strong> Turn the engine OFF.</span>
               </div>
               <div class="mnemonic-banner">
-                <div class="mnemonic-letter">A</div><span><strong>A - Air Pop-Out:</strong> Continue fanning brake pedal. Between <strong>20 - 45 PSI</strong>, the yellow parking brake and red trailer valves MUST pop out automatically.</span>
+                <div class="mnemonic-letter">O</div><span><strong>O - On (Accessories):</strong> Turn key to ON/Accessories position (do NOT start engine).</span>
               </div>
               <div class="mnemonic-banner">
-                <div class="mnemonic-letter">B</div><span><strong>B - Build-Up &amp; Cut-Out:</strong> Start engine. Pressure builds from 85 to 100 PSI within 45 seconds. Governor cuts OUT between <strong>120 - 140 PSI</strong> with a clear purge sneeze.</span>
+                <div class="mnemonic-letter">P</div><span><strong>P - Push Pedal:</strong> Press and hold the brake pedal firmly for <strong>60 seconds</strong>. Must NOT lose more than <strong>3 PSI</strong>.</span>
+              </div>
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">S</div><span><strong>S - Settle:</strong> Let gauges settle — confirm no less than 3 PSI was lost. Hold and observe gauges stabilize.</span>
+              </div>
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">L</div><span><strong>L - Low Air Warning:</strong> Fan/pump brake pedal down. Warning buzzer and red light MUST activate at or above <strong>60 PSI</strong>.</span>
+              </div>
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">A</div><span><strong>A - Alarm Pop-Out:</strong> Continue fanning brake pedal. Between <strong>20 – 40 PSI</strong>, the yellow parking brake and red trailer valves MUST pop out automatically.</span>
+              </div>
+              <div class="mnemonic-banner">
+                <div class="mnemonic-letter">B</div><span><strong>B - Build-Up:</strong> Start engine. Pressure builds back up. Governor cuts OUT between <strong>120 – 140 PSI</strong> — truck is ready to roll.</span>
               </div>
 
               <div class="verbal-box">
-                <div class="verbal-label">EXACT VERBAL SCRIPT TO SAY TO EXAMINER:</div>
-                <p><em>"Examiner, I am now conducting my 4-step Air Brake Check. My wheels are chocked. I push both valves in to release brakes. I turn engine off and turn ignition to ON. I apply the foot brake firmly for 60 seconds. My gauges show I did not lose more than 3 PSI in one minute. Next, I pump the pedal to test the low air warning. At 60 PSI or above, my red warning light and audible buzzer activate. Next, I continue pumping down to test my spring brakes. Between 20 and 45 PSI, my parking valves pop out into emergency set position. Finally, I start the engine to test build-up time and governor cut-out. Pressure builds 85 to 100 PSI within 45 seconds, and the governor cut-out relieves pressure between 120 and 140 PSI."</em></p>
+                <div class="verbal-label">EXACT VERBAL SCRIPT TO SAY TO EXAMINER (POOPSLAB):</div>
+                <p><em>"Examiner, I am now conducting my Air Brake Check using the POOPSLAB sequence. First — Purge: With engine running, my air pressure built to between 120 and 140 PSI and the governor cut out with a purge sneeze. Next — Off: I turn the engine off. On: I turn the key to accessories. Push: I apply the foot brake firmly and hold for 60 seconds — my gauges show I did not lose more than 3 PSI. Settle: Gauges have settled and confirmed no leak. Low Air Warning: I fan the brakes down — at 60 PSI or above, my red warning light and audible buzzer activated. Alarm Pop-Out: Continuing to fan — between 20 and 40 PSI, my yellow parking brake valve and red trailer valve popped out into emergency set position. Build-Up: I start the engine, pressure builds back to 120 to 140 PSI, and the governor cut-out is confirmed. My air brakes are functioning correctly."</em></p>
               </div>
             </div>
           </div>
@@ -166,21 +178,27 @@
                 <h4>Parking &amp; Trailer Brake Check (Tug Test)</h4>
               </div>
               <div class="card-controls">
-                <button class="btn-audio-speak" data-text="Parking and trailer brake check tug test. Set the parking brake, put truck in low gear, gently tug forward against the brake. The vehicle should not move. Next, release the tractor parking brake, set the trailer emergency brake, and gently tug against it. The trailer brake should hold the vehicle firmly.">
+                <button class="btn-audio-speak" data-text="Parking and trailer brake check tug test. Step 1: Parking brake engaged — make sure the yellow button is out. Step 2: Put truck in drive. Step 3: Remove foot from service brake. Step 4: Push gently on gas while driving forward — tugging the truck — say to examiner: My parking brakes are working correctly because my truck did not move. Step 5: Back into neutral. Step 6: Release parking brake by pushing the yellow button in. Step 7: Put truck in drive. Step 8: Pull forward 20 to 30 feet at 5 miles per hour. Step 9: Gently stop. Step 10: Check that the steering wheel doesn't shift left or right — say: My service brakes are working correctly. Step 11: Back into neutral. Step 12: Pull parking brake back out.">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
                 </button>
               </div>
             </div>
             <div class="script-body">
-              <p><strong>Inspection Action:</strong> With parking brake set, put vehicle in low forward gear and gently let out clutch/apply gentle throttle to verify the brake holds firm. Repeat separately for trailer brakes if equipped.</p>
+              <div class="spec-grid">
+                <div class="spec-item"><span class="spec-label">Step 1</span><span class="spec-val">Parking brake engaged (make sure yellow button is <strong>OUT</strong>)</span></div>
+                <div class="spec-item"><span class="spec-label">Step 2</span><span class="spec-val">Put truck in <strong>Drive</strong></span></div>
+                <div class="spec-item"><span class="spec-label">Step 3</span><span class="spec-val">Remove foot from service brake</span></div>
+                <div class="spec-item"><span class="spec-label">Step 4</span><span class="spec-val">Push gently on gas (tugging forward) → <em>"My parking brakes are working correctly because my truck did not move."</em></span></div>
+                <div class="spec-item"><span class="spec-label">Step 5</span><span class="spec-val">Back into <strong>Neutral</strong></span></div>
+              </div>
               <div class="verbal-box">
                 <div class="verbal-label">VERBAL SCRIPT:</div>
-                <p><em>"My parking brake is set. I place the transmission in low gear and gently pull against the brake. The vehicle did not move, confirming the parking brake holds properly. I will now test the trailer brakes by setting the trailer valve and tugging against it. It holds securely."</em></p>
+                <p><em>"My parking brake is engaged — the yellow button is out. I place the truck in drive and gently apply the gas, tugging forward against the brake. My truck did not move, confirming my parking brakes are working correctly."</em></p>
               </div>
             </div>
           </div>
 
-          <!-- Item 3: Service Brake Check 5mph -->
+          <!-- Item 3: Service Brake Check -->
           <div class="script-card" data-id="service-brake">
             <div class="script-card-header">
               <div class="item-title">
@@ -188,16 +206,23 @@
                 <h4>Service Brake Check (5 MPH Test)</h4>
               </div>
               <div class="card-controls">
-                <button class="btn-audio-speak" data-text="Service brake check. Release parking brakes, accelerate forward to approximately 5 miles per hour. Press the foot brake firmly. The vehicle must stop smoothly without pulling to the left or right, and no delay or unusual grabbing.">
+                <button class="btn-audio-speak" data-text="Service brake check. Release parking brake by pushing the yellow button in. Put truck in drive. Pull forward 20 to 30 feet at 5 miles per hour. Gently stop. Check that the steering wheel doesn't shift left or right — say to examiner: My service brakes are working correctly. Back into neutral. Pull parking brake back out.">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen
                 </button>
               </div>
             </div>
             <div class="script-body">
-              <p><strong>Inspection Action:</strong> Pull vehicle forward at <strong>5 mph</strong>, press foot service brake firmly while lightly holding the steering wheel.</p>
+              <div class="spec-grid">
+                <div class="spec-item"><span class="spec-label">Step 1</span><span class="spec-val">Release parking brake — push yellow button <strong>IN</strong></span></div>
+                <div class="spec-item"><span class="spec-label">Step 2</span><span class="spec-val">Put truck in <strong>Drive</strong></span></div>
+                <div class="spec-item"><span class="spec-label">Step 3</span><span class="spec-val">Pull forward <strong>20–30 feet at 5 MPH</strong></span></div>
+                <div class="spec-item"><span class="spec-label">Step 4</span><span class="spec-val">Gently stop — steering wheel must NOT shift left or right</span></div>
+                <div class="spec-item"><span class="spec-label">Step 5</span><span class="spec-val"><em>"My service brakes are working correctly."</em></span></div>
+                <div class="spec-item"><span class="spec-label">Step 6</span><span class="spec-val">Back into <strong>Neutral</strong> → Pull parking brake back out</span></div>
+              </div>
               <div class="verbal-box">
                 <div class="verbal-label">VERBAL SCRIPT:</div>
-                <p><em>"I am pulling forward at approximately 5 miles per hour and pressing the service brake pedal firmly. The vehicle came to a complete, smooth stop. The steering wheel did not pull to the left or right, which indicates my service brakes are stopping evenly with no pulling or grabbing."</em></p>
+                <p><em>"I release the parking brake and pull forward 20 to 30 feet at approximately 5 miles per hour. I press the service brake firmly. The vehicle came to a complete, smooth stop. The steering wheel did not shift left or right — my service brakes are working correctly."</em></p>
               </div>
             </div>
           </div>
@@ -347,6 +372,10 @@
             </div>
             <div class="script-body">
               <p><strong>Note:</strong> You must test <strong>BOTH</strong> the electric (City) horn and the pneumatic (Air) horn!</p>
+              <div class="verbal-box" style="border-left: 3px solid #f59e0b; background: #fef3c7; margin-bottom:10px;">
+                <div class="verbal-label" style="color:#92400e;">⚠️ IMPORTANT — AIR HORN PSI REQUIREMENT:</div>
+                <p><em>The <strong>Air Horn will NOT work</strong> until air pressure reaches at least <strong>90 PSI</strong>. Make sure pressure is built up before testing it!</em></p>
+              </div>
               <div class="verbal-box">
                 <div class="verbal-label">VERBAL SCRIPT:</div>
                 <p><em>"I sound my City electric horn [Honk] - it works loud and clear. I pull the lanyard to sound my Air horn [Honk] - it sounds properly with full air pressure."</em></p>
@@ -952,7 +981,7 @@
         </div>
 
         <div class="score-card" id="airbrake-status-card">
-          <span class="score-title">Air Brake (PLAB) Status</span>
+          <span class="score-title">Air Brake (POOPSLAB) Status</span>
           <div class="status-badge status-pending" id="sim-plab-status">NOT COMPLETED</div>
           <p class="score-sub">Mandatory for passing score</p>
         </div>
@@ -969,7 +998,7 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         <div>
           <strong>CRITICAL SAFETY TEST FAILED:</strong>
-          <span>Skipping or incorrectly verbalizing the Air Brake Check causes an instant DMV failure. Check off all PLAB steps to clear this warning!</span>
+          <span>Skipping or incorrectly verbalizing the Air Brake Check causes an instant DMV failure. Check off all POOPSLAB steps to clear this warning!</span>
         </div>
       </div>
 
@@ -1013,7 +1042,7 @@
                 <span class="fc-hint-tag">Tap to reveal answer</span>
               </div>
               <div class="fc-center">
-                <h3 id="fc-front-title">What are the 4 steps of the Air Brake Check (PLAB)?</h3>
+                <h3 id="fc-front-title">What are the 8 steps of the Air Brake Check (POOPSLAB)?</h3>
                 <p id="fc-front-subtitle">What is the automatic failure criteria?</p>
               </div>
               <div class="fc-bottom">
@@ -1125,8 +1154,8 @@
           <div class="legend-cards">
             <div class="legend-item" data-focus="airbrakes">
               <div class="legend-badge alert">* Automatic Failure</div>
-              <h4>Air Brake Check (PLAB)</h4>
-              <p>Top starred item: Failing any step of the PLAB procedure is an automatic failure of the entire CDL pre-trip exam.</p>
+              <h4>Air Brake Check (POOPSLAB)</h4>
+              <p>Top starred item: Failing any step of the POOPSLAB procedure is an automatic failure of the entire CDL pre-trip exam.</p>
             </div>
 
             <div class="legend-item" data-focus="cotterpin">
@@ -1222,17 +1251,21 @@
 
       <div class="mnemonics-grid">
         
-        <!-- PLAB -->
+        <!-- POOPSLAB -->
         <div class="mnemonic-card">
           <div class="m-head">
-            <span class="m-code">P - L - A - B</span>
-            <h3>Air Brake Check Sequence</h3>
+            <span class="m-code">P - O - O - P - S - L - A - B</span>
+            <h3>Air Brake Check Sequence (POOPSLAB)</h3>
           </div>
           <div class="m-body">
-            <div class="m-step"><strong>P = Pressure Drop:</strong> Key ON, engine OFF, release brakes, hold service brake for 1 min. Max 3 PSI drop (single) or 4 PSI drop (combo).</div>
+            <div class="m-step"><strong>P = Purge:</strong> Build pressure — governor cuts OUT between <strong>120–140 PSI</strong> with a purge sneeze.</div>
+            <div class="m-step"><strong>O = Off:</strong> Turn engine OFF.</div>
+            <div class="m-step"><strong>O = On (Accessories):</strong> Turn key to ON/Accessories position.</div>
+            <div class="m-step"><strong>P = Push Pedal:</strong> Hold foot brake firmly for <strong>60 seconds</strong>. Max <strong>3 PSI</strong> drop.</div>
+            <div class="m-step"><strong>S = Settle:</strong> Let gauges settle — confirm no more than 3 PSI lost.</div>
             <div class="m-step"><strong>L = Low Air Warning:</strong> Fan brakes down. Light &amp; buzzer must sound at or above <strong>60 PSI</strong>.</div>
-            <div class="m-step"><strong>A = Air Pop-Out:</strong> Continue fanning down. Valves pop out automatically between <strong>20 - 45 PSI</strong>.</div>
-            <div class="m-step"><strong>B = Build-Up &amp; Cut-Out:</strong> Start engine. 85 to 100 PSI within 45 sec. Governor cuts OUT at <strong>120 - 140 PSI</strong>.</div>
+            <div class="m-step"><strong>A = Alarm Pop-Out:</strong> Continue fanning. Valves pop out automatically between <strong>20–40 PSI</strong>.</div>
+            <div class="m-step"><strong>B = Build-Up:</strong> Start engine. Pressure builds back to <strong>120–140 PSI</strong>. Governor cuts out — truck is ready.</div>
           </div>
         </div>
 

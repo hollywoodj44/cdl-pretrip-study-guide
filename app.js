@@ -228,7 +228,7 @@ const Simulator = (() => {
   const items = [
     {
       id: 'plab',
-      title: '* Air Brake Check (PLAB Test)',
+      title: '* Air Brake Check (POOPSLAB)',
       desc: 'Pressure drop (1 min), Low air buzzer (60 PSI), Valve pop-out (20-45 PSI), Build-up & cut-out (120-140 PSI)',
       critical: true,
       category: 'In-Cab'
@@ -512,12 +512,16 @@ const FlashcardsLab = (() => {
     {
       category: 'critical',
       catLabel: '🚨 CRITICAL AIR BRAKES',
-      question: 'What does PLAB stand for and why is it critical?',
-      sub: 'Recall the 4 steps and automatic failure penalty.',
-      answer: `<strong>P - Pressure Drop:</strong> Key ON/Engine OFF. Hold service brake 1 min. Max 3 PSI drop (single) or 4 PSI (combination).<br><br>
-               <strong>L - Low Air Warning:</strong> Fan brake pedal. Warning buzzer & red light activate at or above <strong>60 PSI</strong>.<br><br>
-               <strong>A - Air Pop-Out:</strong> Continue fanning down. Spring brake valves pop out at <strong>20-45 PSI</strong>.<br><br>
-               <strong>B - Build-Up & Cut-Out:</strong> Start engine. 85 to 100 PSI within 45 sec. Governor cuts OUT at <strong>120-140 PSI</strong>.<br><br>
+      question: 'What does POOPSLAB stand for and why is it critical?',
+      sub: 'Recall all 8 steps and automatic failure penalty.',
+      answer: `<strong>P - Purge:</strong> With engine running, build pressure. Governor cuts OUT between <strong>120–140 PSI</strong> with a purge sneeze.<br><br>
+               <strong>O - Off:</strong> Turn engine OFF.<br><br>
+               <strong>O - On (Accessories):</strong> Turn key to ON/Accessories position.<br><br>
+               <strong>P - Push Pedal:</strong> Hold foot brake firmly for <strong>60 seconds</strong>. Max <strong>3 PSI</strong> drop.<br><br>
+               <strong>S - Settle:</strong> Let gauges settle — confirm no more than 3 PSI lost.<br><br>
+               <strong>L - Low Air Warning:</strong> Fan brake pedal. Warning buzzer &amp; red light activate at or above <strong>60 PSI</strong>.<br><br>
+               <strong>A - Alarm Pop-Out:</strong> Continue fanning down. Spring brake valves pop out between <strong>20–40 PSI</strong>.<br><br>
+               <strong>B - Build-Up:</strong> Start engine. Pressure builds back to <strong>120–140 PSI</strong>. Governor cuts out — truck is ready.<br><br>
                <em>* Automatic failure if any step is missed or recited incorrectly!</em>`
     },
     {
@@ -751,7 +755,7 @@ const FlashcardsLab = (() => {
 const QuizLab = (() => {
   const questions = [
     {
-      q: 'During the Air Brake Check (PLAB), what is the maximum allowable air pressure loss during the 1-minute applied pressure test on a single commercial vehicle?',
+      q: 'During the Air Brake Check (POOPSLAB), what is the maximum allowable air pressure loss during the 1-minute applied pressure test on a single commercial vehicle?',
       options: [
         'No more than 2 PSI in 1 minute',
         'No more than 3 PSI in 1 minute',
@@ -889,7 +893,7 @@ const QuizLab = (() => {
             You scored <strong>${score} out of ${questions.length}</strong> (${Math.round((score / questions.length) * 100)}%)
           </p>
           <p style="color: #9ca3af; max-width: 500px; margin: 0 auto 1.5rem;">
-            ${score >= 8 ? 'Outstanding job! You have mastered the key test criteria, numbers, and circled notes from the study sheet.' : 'Keep practicing! Review the Verbal Walkthrough and Flashcards to master the 4/32" tread, PLAB steps, and cotter pin items.'}
+            ${score >= 8 ? 'Outstanding job! You have mastered the key test criteria, numbers, and circled notes from the study sheet.' : 'Keep practicing! Review the Verbal Walkthrough and Flashcards to master the 4/32" tread, POOPSLAB steps, and cotter pin items.'}
           </p>
         </div>
       `;
@@ -1156,11 +1160,11 @@ const ClozeFillDrill = (() => {
       catBadge: 'In-Vehicle / Engine Start',
       name: '*air brake check',
       circled: '* Automatic failure if not performed correctly',
-      instruction: 'Fill in the 4-letter mnemonic for the Air Brake Check:',
+      instruction: 'Fill in the 8-letter mnemonic for the Air Brake Check:',
       blanks: [
-        { label: 'Step Mnemonic', answer: 'PLAB', accepted: ['plab', 'p l a b', 'p-l-a-b'], hint: 'Pressure drop, Low air warning, Air pop-out, Build-up' }
+        { label: 'Step Mnemonic', answer: 'POOPSLAB', accepted: ['poopslab', 'p o o p s l a b', 'p-o-o-p-s-l-a-b'], hint: 'Purge, Off, On, Push, Settle, Low air warning, Alarm pop-out, Build-up' }
       ],
-      audioText: 'Air brake check: P-L-A-B. Pressure drop, low air warning, air pop-out, build-up.'
+      audioText: 'Air brake check: P-O-O-P-S-L-A-B. Purge, Off, On accessories, Push pedal, Settle, Low air warning, Alarm pop-out, Build-up.'
     },
     {
       id: 'parking_tug',
